@@ -10,13 +10,15 @@ export interface State extends fromRoot.State{
 export interface ProductState {
   showProductCode: boolean,
   currentProduct: Product,
-  products: Product[]
+  products: Product[],
+  error: string
 }
 
 const initialState:ProductState ={
   showProductCode: true,
   currentProduct:null,
-  products:[]
+  products:[],
+  error:' ',
 }
 
 const getProductFeatureState = createFeatureSelector<ProductState>('products'); 
@@ -69,6 +71,12 @@ export function reducer(state: ProductState = initialState, action: ProductActio
             starRating:0
                     }
         };
+
+    case ProductActionTypes.LoadSuccess:
+      return {
+        ...state,
+        products:action.payload
+      }
     
     default:
       return state;

@@ -21,6 +21,7 @@ import { UserModule } from './user/user.module';
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
+import { EffectsModule} from '@ngrx/effects';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { environment } from 'src/environments/environment';
     HttpClientInMemoryWebApiModule.forRoot(ProductData),
     UserModule,
     AppRoutingModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       name: 'sssssss',
